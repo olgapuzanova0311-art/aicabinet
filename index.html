@@ -7,9 +7,357 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
     <title>AI-Кабинет предпринимателя</title>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body style="background:#050509; color:#fff; font-family:-apple-system,system-ui,sans-serif; padding:20px;">
-    <h1>AI-Кабинет предпринимателя</h1>
-    <p>Если ты видишь этот текст — GitHub Pages работает правильно и HTML рендерится.</p>
+  <body>
+    <div id="app" class="app">
+      <!-- Header with user progress and gamification -->
+      <header class="app-header">
+        <div class="app-header-main">
+          <h1 class="app-title">AI-Кабинет предпринимателя</h1>
+          <p class="app-subtitle">
+            Внедри ИИ в свой бизнес и увеличь прибыль
+          </p>
+        </div>
+        <div class="app-header-side">
+          <div class="level-badge" id="levelBadge">
+            <span class="level-badge-label">Уровень</span>
+            <span class="level-badge-value" id="levelTitle">
+              AI-предприниматель 1 уровня
+            </span>
+          </div>
+          <div class="progress-block">
+            <div class="progress-label">
+              Уровень внедрения ИИ:
+              <span id="aiIndexValue">12%</span>
+            </div>
+            <div class="progress-bar">
+              <div
+                class="progress-bar-fill"
+                id="aiIndexProgress"
+                style="width: 12%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Motivational toast -->
+      <div class="toast" id="motivationToast">
+        <div class="toast-content">
+          <span class="toast-text">
+            Вы уже внедрили больше, чем 80% предпринимателей.
+          </span>
+          <button class="btn btn-ghost btn-sm" id="toastCloseBtn">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Onboarding modal -->
+      <div class="modal-backdrop" id="onboardingModal">
+        <div class="modal">
+          <h2 class="modal-title">Расскажи о своём бизнесе</h2>
+          <p class="modal-subtitle">
+            Эти данные мы будем учитывать во всех стратегиях и генерациях.
+          </p>
+          <form class="form" id="onboardingForm">
+            <div class="form-group">
+              <label class="form-label">Тип бизнеса</label>
+              <div class="chip-group" id="businessTypeGroup">
+                <button type="button" class="chip" data-value="Маркетплейсы">
+                  Маркетплейсы
+                </button>
+                <button type="button" class="chip" data-value="Услуги">
+                  Услуги
+                </button>
+                <button type="button" class="chip" data-value="Инфобизнес">
+                  Инфобизнес
+                </button>
+                <button type="button" class="chip" data-value="Производство">
+                  Производство
+                </button>
+                <button type="button" class="chip" data-value="Другое">
+                  Другое
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Ниша</label>
+              <input
+                type="text"
+                class="input"
+                name="niche"
+                placeholder="Например: онлайн-школа по маркетингу"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Текущий оборот (в месяц)</label>
+              <input
+                type="number"
+                class="input"
+                name="revenue"
+                min="0"
+                step="1000"
+                placeholder="Например: 300000"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Цель</label>
+              <div class="chip-group" id="goalGroup">
+                <button type="button" class="chip" data-value="Рост продаж">
+                  Рост продаж
+                </button>
+                <button
+                  type="button"
+                  class="chip"
+                  data-value="Масштабирование"
+                >
+                  Масштабирование
+                </button>
+                <button
+                  type="button"
+                  class="chip"
+                  data-value="Выход из кризиса"
+                >
+                  Выход из кризиса
+                </button>
+                <button
+                  type="button"
+                  class="chip"
+                  data-value="Запуск нового продукта"
+                >
+                  Запуск нового продукта
+                </button>
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <button type="submit" class="btn btn-primary btn-block">
+                Сохранить и продолжить
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Main layout -->
+      <main class="app-main">
+        <!-- Sidebar (or top tabs on mobile) -->
+        <nav class="main-nav" id="mainNav">
+          <button
+            class="nav-item nav-item-active"
+            data-screen="home"
+            type="button"
+          >
+            🏠 Главная
+          </button>
+          <button class="nav-item" data-screen="strategy" type="button">
+            🚀 Стратегия роста
+          </button>
+          <button class="nav-item" data-screen="cards" type="button">
+            📦 Карточки товара
+          </button>
+          <button class="nav-item" data-screen="content" type="button">
+            🎥 Контент-завод
+          </button>
+          <button class="nav-item" data-screen="offers" type="button">
+            💰 Офферы
+          </button>
+          <button class="nav-item" data-screen="simulator" type="button">
+            🧠 Симулятор
+          </button>
+          <button class="nav-item" data-screen="diagnostics" type="button">
+            📊 Диагностика
+          </button>
+          <button class="nav-item" data-screen="programs" type="button">
+            🎓 Программы
+          </button>
+          <button class="nav-item" data-screen="course" type="button">
+            🔥 Основной курс
+          </button>
+        </nav>
+
+        <!-- Screens container -->
+        <section class="screen-container">
+          <!-- HOME SCREEN -->
+          <section class="screen screen-active" id="screen-home">
+            <div class="grid">
+              <button
+                class="card-link"
+                data-screen-target="strategy"
+                type="button"
+              >
+                <div class="card-icon">🚀</div>
+                <div class="card-content">
+                  <h3 class="card-title">Стратегия роста</h3>
+                  <p class="card-text">
+                    Пошаговый план масштабирования бизнеса с ИИ на 6 месяцев.
+                  </p>
+                </div>
+              </button>
+
+              <button
+                class="card-link"
+                data-screen-target="cards"
+                type="button"
+              >
+                <div class="card-icon">📦</div>
+                <div class="card-content">
+                  <h3 class="card-title">Генератор карточек товара</h3>
+                  <p class="card-text">
+                    SEO-заголовки, описание, преимущества и триггеры доверия.
+                  </p>
+                </div>
+              </button>
+
+              <button
+                class="card-link"
+                data-screen-target="content"
+                type="button"
+              >
+                <div class="card-icon">🎥</div>
+                <div class="card-content">
+                  <h3 class="card-title">Контент-завод</h3>
+                  <p class="card-text">
+                    Конвейер контента на 14 дней под ваши цели.
+                  </p>
+                </div>
+              </button>
+
+              <button
+                class="card-link"
+                data-screen-target="offers"
+                type="button"
+              >
+                <div class="card-icon">💰</div>
+                <div class="card-content">
+                  <h3 class="card-title">Генератор офферов</h3>
+                  <p class="card-text">
+                    15 сильных офферов с упором на выгоду и дедлайны.
+                  </p>
+                </div>
+              </button>
+
+              <button
+                class="card-link"
+                data-screen-target="simulator"
+                type="button"
+              >
+                <div class="card-icon">🧠</div>
+                <div class="card-content">
+                  <h3 class="card-title">Симулятор запуска</h3>
+                  <p class="card-text">
+                    Смоделируйте запуск и поймите, какие цифры вам нужны.
+                  </p>
+                </div>
+              </button>
+
+              <button
+                class="card-link"
+                data-screen-target="diagnostics"
+                type="button"
+              >
+                <div class="card-icon">📊</div>
+                <div class="card-content">
+                  <h3 class="card-title">Диагностика бизнеса</h3>
+                  <p class="card-text">
+                    Узнайте уровень внедрения ИИ и точки роста.
+                  </p>
+                </div>
+              </button>
+
+              <button
+                class="card-link"
+                data-screen-target="programs"
+                type="button"
+              >
+                <div class="card-icon">🎓</div>
+                <div class="card-content">
+                  <h3 class="card-title">Бесплатные программы по ИИ</h3>
+                  <p class="card-text">
+                    Видео-программы и воркшопы для запуска внедрения.
+                  </p>
+                </div>
+              </button>
+
+              <button
+                class="card-link card-link-accent"
+                data-screen-target="course"
+                type="button"
+              >
+                <div class="card-icon">🔥</div>
+                <div class="card-content">
+                  <h3 class="card-title">Основной курс по ИИ</h3>
+                  <p class="card-text">
+                    Полная система внедрения ИИ в бизнес под ключ.
+                  </p>
+                </div>
+              </button>
+            </div>
+          </section>
+
+          <!-- Дальше идут экраны: стратегия, карточки, контент, офферы,
+               симулятор, диагностика, программы, курс, PRO-модалка.
+               Чтобы не взрывать одно сообщение, давай сделаем так:
+               сейчас мы подключим стили и JS, и ты уже увидишь структуру.
+               Потом я при необходимости пришлю полный код всех секций. -->
+        </section>
+      </main>
+
+      <!-- Monetization / PRO banner -->
+      <footer class="app-footer">
+        <div class="footer-left">
+          <span id="dailyLimitInfo">
+            Бесплатный режим: 5 генераций в день, базовые шаблоны.
+          </span>
+        </div>
+        <div class="footer-right">
+          <button class="btn btn-ghost btn-sm" id="statsBtn">
+            Статистика
+          </button>
+          <button class="btn btn-pro" id="proBtn">PRO‑режим</button>
+        </div>
+      </footer>
+
+      <!-- PRO modal -->
+      <div class="modal-backdrop" id="proModal">
+        <div class="modal">
+          <h2 class="modal-title">PRO‑режим AI‑кабинета</h2>
+          <p class="modal-subtitle">
+            Получите безлимитные генерации, продвинутые промпты и дополнительные
+            стратегии.
+          </p>
+          <ul class="list">
+            <li>Без ограничений по количеству запросов</li>
+            <li>Доступ к закрытым AI‑шаблонам и воронкам</li>
+            <li>Расширенная аналитика и рекомендации по внедрению</li>
+          </ul>
+          <div class="modal-actions">
+            <button
+              class="btn btn-primary btn-block"
+              id="proEnrollBtn"
+              type="button"
+            >
+              Перейти к оплате / заявке
+            </button>
+            <button
+              class="btn btn-ghost btn-block"
+              id="proCloseBtn"
+              type="button"
+            >
+              Оставить бесплатный режим
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
   </body>
 </html>
