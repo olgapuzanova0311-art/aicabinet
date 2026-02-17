@@ -1,25 +1,146 @@
-{\rtf1\ansi\ansicpg1251\cocoartf2868
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+// Простое состояние
+let userProfile = null;
 
-\f0\fs24 \cf0 // Basic state\
-const STORAGE_KEYS = \{\
-  onboarding: 'ai_cabinet_onboarding_v1',\
-  stats: 'ai_cabinet_stats_v1',\
-\};\
-\
-const DAILY_FREE_LIMIT = 5;\
-\
-let userProfile = null;\
-let stats = \{\
-  dailyGenerations: 0,\
-  totalGenerations: 0,\
-  aiIndex: 12,\
-  actionsCount: 0,\
-  level: 1,\
-\};\
-\
-// ... \uc0\u1076 \u1072 \u1083 \u1077 \u1077  \u1074 \u1077 \u1089 \u1100  JS: \u1085 \u1072 \u1074 \u1080 \u1075 \u1072 \u1094 \u1080 \u1103 , \u1086 \u1085 \u1073 \u1086 \u1088 \u1076 \u1080 \u1085 \u1075 , \u1075 \u1077 \u1085 \u1077 \u1088 \u1072 \u1094 \u1080 \u1080 , PRO, WebApp API ...}
+// Открытие/закрытие онбординга
+function openOnboardingIfNeeded() {
+  const modal = document.getElementById('onboardingModal');
+  if (!modal) return;
+
+  const saved = localStorage.getItem('ai_cabinet_onboarding_v1');
+  if (!saved) {
+    modal.classList.add('modal-backdrop-visible');
+  } else {
+    try {
+      userProfile = JSON.parse(saved);
+    } catch {
+      userProfile = null;
+      modal.classList.add('modal-backdrop-visible');
+    }
+  }
+}
+
+function initOnboarding() {
+  const form = document.getElementById('onboardingForm');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    userProfile = {
+      businessType: fd.get('businessType') || null,
+      niche: fd.get('niche') || '',
+      revenue: Number(fd.get('revenue') || 0) || 0,
+      goal: fd.get('goal') || null,
+    };
+    localStorage.setItem(
+      'ai_cabinet_onboarding_v1',
+      JSON.stringify(userProfile)
+    );
+    const modal = document.getElementById('onboardingModal');
+    if (modal) modal.classList.remove('modal-backdrop-visible');
+  });
+}
+
+// Навигация по экранам
+function switchScreen(screen) {
+  document
+    .querySelectorAll('.screen')
+    .forEach((s) => s.classList.remove('screen-active'));
+  const target = document.getElementById(`screen-${screen}`);
+  if (target) target.classList.add('screen-active');
+
+  document
+    .querySelectorAll('.nav-item')
+    .forEach((n) => n.classList.remove('nav-item-active'));
+  document
+    .querySelectorAll(`.nav-item[data-screen="${screen}"]`)
+    .forEach((n) => n.classList.add('nav-item-active'));
+}
+
+function initNav() {
+  document.querySelectorAll('.nav-item').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const screen = btn.getAttribute('data-screen');
+      if (screen) switchScreen(screen);
+    });
+  });
+
+  document.querySelectorAll('[data-screen-target]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const screen = btn.getAttribute('data-screen-target');
+      if (screen) switchScreen(screen);
+    });
+  });
+}
+
+// PRO‑модалка
+function initProModal() {
+  const proBtn = document.getElementById('proBtn');
+  const proModal = document.getElementById('proModal');
+  const proCloseBtn = document.getElementById('proCloseBtn');
+  const proEnrollBtn = document.getElementById('proEnrollBtn');
+
+  if (proBtn && proModal) {
+    proBtn.addEventListener('click', () => {
+      proModal.classList.add('modal-backdrop-visible');
+    });
+  }
+  if (proCloseBtn && proModal) {
+    proCloseBtn.addEventListener('click', () => {
+      proModal.classList.remove('modal-backdrop-visible');
+    });
+  }
+  if (proEnrollBtn && proModal) {
+    proEnrollBtn.addEventListener('click', () => {
+      alert('Заявка на PRO‑режим отправлена (заглушка).');
+      proModal.classList.remove('modal-backdrop-visible');
+    });
+  }
+}
+
+// Тост‑мотивация
+function initToast() {
+  const toast = document.getElementById('motivationToast');
+  const closeBtn = document.getElementById('toastCloseBtn');
+  if (!toast || !closeBtn) return;
+
+  // Покажем тост через пару секунд после загрузки
+  setTimeout(() => {
+    toast.classList.add('toast-visible');
+  }, 3000);
+
+  closeBtn.addEventListener('click', () => {
+    toast.classList.remove('toast-visible');
+  });
+}
+
+// Статистика (пока просто алерт)
+function initStats() {
+  const btn = document.getElementById('statsBtn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    alert('Статистика будет здесь (заглушка).');
+  });
+}
+
+// Telegram WebApp (если открыто из бота)
+function initTelegram() {
+  if (!window.Telegram || !window.Telegram.WebApp) return;
+  try {
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+  } catch {
+    // ignore
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTelegram();
+  initNav();
+  initOnboarding();
+  openOnboardingIfNeeded();
+  initProModal();
+  initToast();
+  initStats();
+});
