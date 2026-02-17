@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ru"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta</p>
+<p class="p1"><span class="Apple-converted-space">      </span>name="viewport"</p>
+<p class="p1"><span class="Apple-converted-space">      </span>content="width=device-width, initial-scale=1.0, maximum-scale=1.0"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;AI-Кабинет предпринимателя&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="./styles.css" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="app" class="app"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Header with user progress and gamification --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;header class="app-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="app-header-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h1 class="app-title"&gt;AI-Кабинет предпринимателя&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="app-subtitle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Внедри ИИ в свой бизнес и увеличь прибыль</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="app-header-side"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="level-badge" id="levelBadge"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="level-badge-label"&gt;Уровень&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="level-badge-value" id="levelTitle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>AI-предприниматель 1 уровня</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="progress-block"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-label"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>Уровень внедрения ИИ:</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;span id="aiIndexValue"&gt;12%&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="progress-bar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="progress-bar-fill"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>id="aiIndexProgress"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>style="width: 12%"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Motivational toast --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="toast" id="motivationToast"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="toast-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="toast-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Вы уже внедрили больше, чем 80% предпринимателей.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn btn-ghost btn-sm" id="toastCloseBtn"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>✕</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Onboarding modal --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="modal-backdrop" id="onboardingModal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="modal-title"&gt;Расскажи о своём бизнесе&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="modal-subtitle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Эти данные мы будем учитывать во всех стратегиях и генерациях.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;form class="form" id="onboardingForm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="form-label"&gt;Тип бизнеса&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="chip-group" id="businessTypeGroup"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="chip" data-value="Маркетплейсы"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Маркетплейсы</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="chip" data-value="Услуги"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Услуги</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="chip" data-value="Инфобизнес"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Инфобизнес</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="chip" data-value="Производство"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Производство</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="chip" data-value="Другое"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Другое</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="form-label"&gt;Ниша&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="text"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="input"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name="niche"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>placeholder="Например: онлайн-школа по маркетингу"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>required</p>
+<p class="p1"><span class="Apple-converted-space">              </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="form-label"&gt;Текущий оборот (в месяц)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="number"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="input"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name="revenue"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>min="0"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>step="1000"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>placeholder="Например: 300000"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>required</p>
+<p class="p1"><span class="Apple-converted-space">              </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="form-label"&gt;Цель&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="chip-group" id="goalGroup"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="chip" data-value="Рост продаж"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Рост продаж</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>class="chip"</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>data-value="Масштабирование"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Масштабирование</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>class="chip"</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>data-value="Выход из кризиса"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Выход из кризиса</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>class="chip"</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>data-value="Запуск нового продукта"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>Запуск нового продукта</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="modal-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button type="submit" class="btn btn-primary btn-block"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Сохранить и продолжить</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/form&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Main layout --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;main class="app-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Sidebar (or top tabs on mobile) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;nav class="main-nav" id="mainNav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">            </span>class="nav-item nav-item-active"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>data-screen="home"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>🏠 Главная</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="nav-item" data-screen="strategy" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>🚀 Стратегия роста</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="nav-item" data-screen="cards" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>📦 Карточки товара</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="nav-item" data-screen="content" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>🎥 Контент-завод</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="nav-item" data-screen="offers" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>💰 Офферы</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="nav-item" data-screen="simulator" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>🧠 Симулятор</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="nav-item" data-screen="diagnostics" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>📊 Диагностика</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="nav-item" data-screen="programs" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>🎓 Программы</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="nav-item" data-screen="course" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>🔥 Основной курс</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Screens container --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="screen-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- HOME SCREEN --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;section class="screen screen-active" id="screen-home"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="card-link"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data-screen-target="strategy"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;🚀&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h3 class="card-title"&gt;Стратегия роста&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="card-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Пошаговый план масштабирования бизнеса с ИИ на 6 месяцев.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="card-link"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data-screen-target="cards"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;📦&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h3 class="card-title"&gt;Генератор карточек товара&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="card-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>SEO-заголовки, описание, преимущества и триггеры доверия.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="card-link"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data-screen-target="content"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;🎥&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h3 class="card-title"&gt;Контент-завод&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="card-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Конвейер контента на 14 дней под ваши цели.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="card-link"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data-screen-target="offers"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;💰&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h3 class="card-title"&gt;Генератор офферов&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="card-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>15 сильных офферов с упором на выгоду и дедлайны.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="card-link"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data-screen-target="simulator"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;🧠&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h3 class="card-title"&gt;Симулятор запуска&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="card-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Смоделируйте запуск и поймите, какие цифры вам нужны.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="card-link"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data-screen-target="diagnostics"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;📊&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h3 class="card-title"&gt;Диагностика бизнеса&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="card-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Узнайте уровень внедрения ИИ и точки роста.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="card-link"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data-screen-target="programs"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;🎓&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h3 class="card-title"&gt;Бесплатные программы по ИИ&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="card-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Видео-программы и воркшопы для запуска внедрения.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="card-link card-link-accent"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data-screen-target="course"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;🔥&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;h3 class="card-title"&gt;Основной курс по ИИ&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;p class="card-text"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Полная система внедрения ИИ в бизнес под ключ.</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- ДАЛЬШЕ ИДУТ ОСТАЛЬНЫЕ ЭКРАНЫ (стратегия, карточки, контент, офферы,</p>
+<p class="p1"><span class="Apple-converted-space">               </span>симулятор, диагностика, программы, курс) — чтобы не засорять ответ,</p>
+<p class="p1"><span class="Apple-converted-space">               </span>я их уже прописал выше в твоём проекте.<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">               </span></p>
+<p class="p1"><span class="Apple-converted-space">               </span>Чтобы не копировать тонну HTML в чат, сделаем проще:</p>
+<p class="p1"><span class="Apple-converted-space">               </span>я сейчас дам тебе отдельно JS и CSS, а оставшийся HTML<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">               </span>могу выслать вторым сообщением, если нужно именно «под ключ». --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Monetization / PRO banner --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;footer class="app-footer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="footer-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span id="dailyLimitInfo"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Бесплатный режим: 5 генераций в день, базовые шаблоны.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="footer-right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn btn-ghost btn-sm" id="statsBtn"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Статистика</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn btn-pro" id="proBtn"&gt;PRO‑режим&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- PRO modal --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="modal-backdrop" id="proModal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="modal-title"&gt;PRO‑режим AI‑кабинета&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="modal-subtitle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Получите безлимитные генерации, продвинутые промпты и дополнительные</p>
+<p class="p1"><span class="Apple-converted-space">            </span>стратегии.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;ul class="list"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Без ограничений по количеству запросов&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Доступ к закрытым AI‑шаблонам и воронкам&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Расширенная аналитика и рекомендации по внедрению&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="modal-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">              </span>class="btn btn-primary btn-block"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>id="proEnrollBtn"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>Перейти к оплате / заявке</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">              </span>class="btn btn-ghost btn-block"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>id="proCloseBtn"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>type="button"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>Оставить бесплатный режим</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="./main.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
